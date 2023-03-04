@@ -12,3 +12,4 @@ def clone_repos(username):
 
 # Example usage
 clone_repos('username')
+#python3 clone.py
