@@ -1,1 +1,6 @@
 
+NAHAMSEC: FINDING EVERY DOMAIN OWNED BY A COMPANY
+12TH MAY 2023
+this tutorial shows how to use crt.sh to pull all subdomains owned by a company 
+execute the following commands
+curl -s https://crt.sh/\?o\=paypal\&output\=json    {this command will give us all paypal subdomains in the json format. the "o" arguments denotes organisation} 
