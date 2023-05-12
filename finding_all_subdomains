@@ -7,3 +7,6 @@ copy the entire results into a file e.g paypal.txt ..then execute the following
 cat paypal.txt | jq -r '.[].common_name' | sed 's/\*//g' | sort -u | domainparser | sort -u
 {the wc -l tells us how many lines of subdomains we have}
 use can also use whoxy but it is a paid service
+
+Critical Bounties via Leaked API Keys (FT TruffleHug)
+use trufflehug for github recon
