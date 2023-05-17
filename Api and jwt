@@ -1,0 +1,6 @@
+To crack jwt key use hashcat with the following command:
+hashcat -m 16500 jwt.txt rockyou.txt
+where jwt.txt is your jwt token and rockyou.txt is from a github repo
+
+always check source code and download js file and inspect carefully
+find http.post or http.get

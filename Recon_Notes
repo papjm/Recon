@@ -1,0 +1,62 @@
+For sites that may not have bug programs on hackerone and other platforms. if you find a valid bug on their domain check for the direct /.well-known/security.txt
+Not Found/404 pages can leak information about the web stack used by a company or application. It also allows you to detect files that exists when you start bruteforcing directory. This is why it is important to check what the 404 page looks like.
+
+
+Fuzzing directories
+
+When accessing a new webserver, it often pays off to brute force directories. To do this, you can use many tools like patator, FFUF or WFuzz (amongst many others).
+Fuzzing directories
+
+When accessing a new webserver, it often pays off to replace the hostname with the IP address or to provide a random Host header in the request. To do this, you can either modify the request in a web proxy or use:
+certificates does not match an ip address it matches host name.
+It is important to inject different host name to request and observe the applications reponse.
+e.g curl http://127.0.0.1 -v -H "Host: test"
+
+
+Alternative names
+
+When accessing a TLS server, it often pays off to check the content of the certificate used. It's common for TLS servers to have certificates that are valid for more than one name (named alternative names). Looking for alternative names can be done in your client or by using openssl.  use chrome click the padlock icon click more information and navigate to alternative names
+
+
+Header inspection
+
+When accessing a web server, it often pays off to check the responses' headers. It's common to find information around version and technologies used.
+
+
+Load balancing
+
+Serving requests for a single application can be done by multiple backends. It can pay off to send the same request multiple times to check if multiple backends are involved. Try sending multiple request to thesame host and inspect if it uses different servers also check the set cookie for differences
+
+
+TXT Record
+
+TXT records are often used to show that people own a domain or to store information to configure services, it's always a good idea to check for those. dig -t TXT key.z.hackycorp.com
+
+
+Zone transfer
+
+Zone transfers are usually used to synchronise multiple DNS servers. Only a list of pre-defined hosts should be able to perform this operation. However, it's sometimes possible to retrieve this information and can give you access to new hosts.
+Zone transfers are usually used to synchronise multiple DNS servers. Only a list of pre-defined hosts should be able to perform this operation. However, it's sometimes possible to retrieve information from internal zones by asking publicly available servers.
+
+READ MORE ON ZONE TRANSFER
+
+
+
+
+Bind
+
+Bind is one of the most common DNS server used. If you know how to ask, it will reveal you its version.
+
+
+Git Recon:
+It is important to check git repos and all git logs : check git logs by cloning the repo, cd into the repo and execute git log
+also check for different branches
+search deleted repos...Often, when committing secrets by mistake, developers just remove the file and commit again. Leaving the information available for anyone willing to search for it.
+after cloning a repo cd into it and execute tig ...{to search the content of all files in the repo}
+
+It's important to look at commit messages and search for keywords.
+
+It's essential to look for files that may be publicly available on the servers used to load assets.
+
+Amazon Web Services Storage Service (S3) allows file owners to set permissions on files. Historically, the rules "Any users" wasn't well explained and lead a lot of people to think only people in their Amazon account could access a file. However, this was allowing any AWS account to access the file.
+in the page source page find js files and search for sensitive data

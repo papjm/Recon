@@ -1,0 +1,11 @@
+When pentesting make sure to check the "tmp" directory you may be lucky to find lucky stuffs(you can use the waybackurls or the wayback machine on web.archive.org)
+also check /var/tmp
+try to access the /etc/shadow file {it is the file that contains saved passwords}
+
+MD5 is used. It can be detected by the prefix of the password: $1$.
+
+If you look at other files, you can tell that:
+
+    if the hash starts by $2$ or $2a$, Blowfish is used;
+    if the hash starts by $5$, SHA-256 is used;
+    if the hash starts by $6$, SHA-512 is used.

@@ -1,0 +1,30 @@
+Android_02: The way to solve this exercise is to extract the contents of the apk (using apktool) for example) to get the configuration files of the application. Once you manage to extract the apk, you will find multiple files. It's always important to check for file ending in .db or .sqlite to see what information is shipped with the application. By reviewing these files, you should be able to find the key to solve this exercise.
+ Android_01: The way to solve this exercise is to extract the content of the apk (using apktool) for example) to get the configuration files of the application. Once you manage to extract the apk, you should check the content of the following files:
+check for database names most times the database names can be found in androidmanifest.xml(or search for .db, .database etc"find . -name data.sqlite" "sqlite3 ./assets/data.sqlite")
+
+    AndroidManifest.xml: this is the main configuration file used by all Android applications. It is used by Android to get information about the application as well as what functionalities are exposed to other applications (amongst other things).
+    res/values/strings.xml
+
+apktool allows you to unzip the apk file and also decode files like AndroidManifest.xml to make it easier to review them.
+
+By inspecting these files, you will be able to get the key to score this exercise.
+ja
+Android_03: The second way is to extract the application yourself using unzip. From there, you should see a file named classes.dex. You can then use the tool dex2jar to convert the dex file to a jar file. Once this is done, you can either unzip the jar file to browse the code or use jd-gui.
+
+By inspecting the smali code or the java code, you should be able to find the key to solve this exercise.If you are more comfortable with java than smali. follow the following step
+unzip app.apk
+d2jar-dex2jar file.dex
+unzip ja_file.jar
+use jad to open the .class file by:
+jad directory/file.jad
+
+Android_04: The second way is to extract the application yourself using unzip. From there, you should see a file named classes.dex. You can then use the tool dex2jar to convert the dex file to a jar file. Once this is done, you can either unzip the jar file to browse the code or use jd-gui.
+
+By inspecting the smali code or the java code, you should be able to find the way the key has been "encrypted". It's actually a XOR between the key and a single character. You can easily retrieve the clear text by applying the same operation to the obfuscated text.
+
+
+"i]\rD\u0004\u0015\u0017\u0004_~\u0002\u0006`HZ@UBY\\Ku\u0002O2\u0003_MQB\u0010\u0007G~\u0004Q"
+
+    const v1, 0x7f0b0014
+
+(a.a("i]\rD\004\025\027\004_~\002\006`HZ@UBY\\Ku\002O2\003_MQB\020\007G~\004Q", getString(2131427348)));

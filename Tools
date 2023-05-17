@@ -1,0 +1,19 @@
+use crackstation.net to crack hashed password
+get subdomains fromo crt.sh
+
+curl -fsSL "https://crt.sh/?q=%25.farmgirlflowers.com" | pup 'td :contains(".farmgirlflowers.com") text{}' | sort -n | uniq -c | sort -rn | column -t | cut -c 5- > crt_subdomains.txt
+
+
+
+
+curl -fsSL "https://crt.sh/?q=%25.domain-name.com&exclude=expired" | pup 'td :contains(".domain-name.com") text{}' | sort -n | uniq -c | sort -rn | column -t | cut -c 5- > domains.txt
+
+
+curl -fsSL "https://crt.sh/?q=%25.coinhako.com" | pup 'td :contains(".coinhako.com") text{}' | sort -n | uniq -c | sort -rn | column -t | cut -c 5- > crt_subdomains.txt
+
+
+jsmon for monitoring changes in javascript files. make sure to look it up
+
+use case for nuclei cat probed_domains.txt| nuclei ../.././cent-nuclei-templates -tags cve
+
+sed 's/https:\/\/\([^\/]*\).*/\1/' url_list.txt  this terminal command will remove https:// from a list of url in a url_list.txt file

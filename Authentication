@@ -1,0 +1,3 @@
+try decrypting cookie with hashes (use google,john or hashcat)
+database may not impliment case sensitive checks...try creating accounts with thesame user but different case. also try adding spaces
+try moldifying url paths adding ".json .html" and check for differences in the server response

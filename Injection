@@ -1,0 +1,24 @@
+MongoDB: 
+This example is the MongoDB version of the (in)famous ' or 1=1 --.
+
+If you remember what you saw previously, you know that you will need two things to bypass this login:
+
+    An always true condition.
+    A way to correctly terminate the NoSQL query.
+
+First, by reading MongoDB documentation you can find that the SQL or 1=1 translates to || 1==1 (note the double =).
+
+Then by poking around, you can see that a NULL BYTE will prevent MongoDB from using the rest of the query.
+
+In some cases, you can also use the comments // or <!-- to comment out the end of the query.
+
+With this information, you should be able to bypass the authentication form.
+
+    Support Privacy Terms of Service 
+
+MYSQL:
+This example was first published in 2006 on Chris Shiflett's Blog as a way to bypass addslashes. It relies on the way MySQL will perform escaping. It will depend on the charset used by the connection. If the database driver is not aware of the charset used it will not perform the right escaping and create an exploitable situation. This exploit relies on the usage of GBK. GBK is a character set for simplified Chinese. Using the fact that the database driver and the database don't "talk" the same charset, it's possible to generate a single quote and break out of the SQL syntax to inject a payload.
+
+Using the string \xBF' (URL-encoded as %bf%27), it's possible to get a single quote that will not get escaped properly. It's therefore possible to inject an always-true condition using %bf%27 or 1=1 -- and bypass the authentication.
+
+As a side note, this issue can be remediated by setting up the connection encoding to 'GBK' instead of using an SQL query (which is the source of this issue). Here the problem comes from the execution of the following query:

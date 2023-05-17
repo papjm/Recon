@@ -1,0 +1,3 @@
+sending multipart request using http you can execute the following command using curl 
+
+curl http://url.com -F "filename=@file.txt"
