@@ -1,0 +1,81 @@
+Jason Haddix Recon and Web Application workflow:
+
+you can use webanalyze(its a command line tool that could do what wappalyzer and builtwith does)
+
+Use naabu(by project discovery to do port scanning)
+
+use feroxbuster for content discovery. strongly recommended by jhaddix
+The other following tools can also be used for content discovery:
+
+ffuf(fuxx faster u fool):
+wfuzz
+dirsearch
+gobuster
+
+wordlists.assetnote.com(Strongly recommended by jason haddix) pick your  wordlist based on technologies used by the web application.
+
+the following are also good wordlist you can try out:
+robots dissallowed
+https://github.com/six2dez/oneListForAll
+jhaddix/content_discovery_all.txt
+
+jason said always look out for appsettings.json files
+
+use scavenger burp extension to create a custom wordlist of your target
+
+you can also use gau by initiating the following command:
+echo bugcrowd.com | gau | wordlistgen | sort -u
+you can get wordlistgen from ameenmaali public git repo
+
+also gau can be gotten from github.com/michael1026/trashcompactor
+
+oftern when doing this part of web assessment you will run into 401 not authorized responses. it is beneficial to recursively brute force that path.Often resources past that path have not had the same access controls applied. In addition, 401 replies should be investigated with wayback machine (https://web.archive.org/web) to see if they ever did not have authentication applied and to gather clues about the application pathing;
+
+https://someapp.com/admin   401
+https://someapp.com/admin/dashboard/   401
+https://someapp.com/admin/dashboard/members 200
+
+
+for mobile apps use github.com/dwisiswant0/apkleaks
+
+
+if you plan on hacking on a particular target for a long time you need to be informed on changes and updates made to their infracstructure
+you can sign up for their news letter 
+. you could also google for their conference talks to know of new update on the horizon.
+github.com/dgtlmoon/changedetection.io is also a great tool
+
+use gospider,hakcrawler,zapproxy or burp suite to crawl your target
+
+you can also use xnlinkfinder or linkfinder 
+jason use the following generic arguments with the xnlinkfinder
+python3 xnlinkfinder.py -i tesla.com -v -d 2 sp https://www.tesla.com
+xnlfinder has a burp extension called GAP
+
+using GFtools to look for patterns cat urls.txt | gf sqli or use burp bounty
+
+
+
+
+application/x-www-form-urlencoded 
+
+Recollapse typical arguements:
+recollapse https://example.com > wordlist.txt; ffuf -w wordlist.txt -u http://localhost:3000/redirect?url=FUZZ -fc 403
+
+ANDROID PENTESTING:
+1. first create a directory fo the app you are pentesting:
+===>> mkdir app_pentesting
+2. ===>> adb install app.apk
+3. cd into app_pentesting
+4. ===>> adb shell pm list packages(find the name of the app installed and copy it)
+5. adb shell pm path app.apk (to get the path of the apk to be pulled)
+6. adb pull "the path of the apk file" (while in the directory you created for app_pentesting )
+oh i just remembered  an unknown trick for IIS: requesting 
+/NUL:
+ will trigger exception and bypass url filters
+when iis is configured wrong- user will see stack ttrace
+easy test, easy bounty 
+ 
+https://jira.specialized.com/secure/ConfigurePortalPages!default.jspa?view=search&searchOwnerUserName=%3Cscript%3Ealert(1)%3C/script%3E&Search=Search
+
+Code 1: 0525532713
+code 2: 7655433751
