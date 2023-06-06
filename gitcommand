@@ -1,1 +1,3 @@
 git diff  -------- to check differences in commits
+git commit -m "add a message"
+git init 
