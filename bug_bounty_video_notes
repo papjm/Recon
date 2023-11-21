@@ -1,3 +1,4 @@
 NNOTES FOR VIDEO: https://www.youtube.com/watch?v=Z2Lxx8l5FVY&t=3531s
 Try to check your custom directories that carries the name of the subdomain e.g : https://subdomain.example.com/subdomain(windows NTLM)
 you will need NTLM challenge decoder(burp extension)
+in situations where the server uses HTTP/2 downgrade to http/1.1
