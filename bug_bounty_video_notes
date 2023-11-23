@@ -8,3 +8,4 @@ shodan download --limit 100000 chip 'hostname: "domain.com"'
 you may need to initialize your api-key if you haven't done that before.
 to add your api key run : shodan init <api key>
 
+shodan download --limit 100000 j 'ssl: "organization for all inc"'
