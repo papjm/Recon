@@ -5,3 +5,6 @@ in situations where the server uses HTTP/2 downgrade to http/1.1
 
 
 shodan download --limit 100000 chip 'hostname: "domain.com"'
+you may need to initialize your api-key if you haven't done that before.
+to add your api key run : shodan init <api key>
+
