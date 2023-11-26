@@ -11,3 +11,8 @@ to add your api key run : shodan init <api key>
 shodan download --limit 100000 j 'ssl: "organization for all inc"'
 
 cat ips.txt | httpx --random-agent --status-code --title -server -td -cl -fc 400
+
+
+
+
+NOTES FROM VIDEO: https://www.youtube.com/watch?v=XlmeSFm3RT4
