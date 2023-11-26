@@ -17,3 +17,4 @@ cat ips.txt | httpx --random-agent --status-code --title -server -td -cl -fc 400
 
 NOTES FROM VIDEO: https://www.youtube.com/watch?v=XlmeSFm3RT4
 reNgine tool for recon: https://github.com/yogeshojha/rengine
+Amass tracking and anew(sudomain monitoring tool for new subdomains)
