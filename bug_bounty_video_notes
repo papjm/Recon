@@ -29,3 +29,9 @@ HOW TO DORK ON SHODAN:
 ssl: "organissation name"
 Ssl.cert.subject.CN:"orwa.com"
 urlscan.io
+
+
+
+ORWA GODFATHER:
+https://www.youtube.com/watch?v=_aST_z_qTYE        
+use domain collector to fetch subdomains from crt.sh
