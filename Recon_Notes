@@ -60,3 +60,9 @@ It's essential to look for files that may be publicly available on the servers u
 
 Amazon Web Services Storage Service (S3) allows file owners to set permissions on files. Historically, the rules "Any users" wasn't well explained and lead a lot of people to think only people in their Amazon account could access a file. However, this was allowing any AWS account to access the file.
 in the page source page find js files and search for sensitive data
+
+
+
+
+WAF BYPASS:
+https://twitter.com/Jayesh25_/status/1735240906750443851
