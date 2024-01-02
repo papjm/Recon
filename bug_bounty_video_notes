@@ -52,3 +52,4 @@ https://github.com/milo2012/pathbrute
 
 NAHASEC:
 https://www.youtube.com/watch?v=YqHRBUHAe5I
+use gau and waybackurls. dump them into a txt file and sort for unique using the sort -u command
