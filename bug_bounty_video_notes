@@ -79,3 +79,5 @@ CLOUD RECON:
 cloud recon uses SSL certificate enumeration to find subdomains of our targets
 check out g0ldencybersec github repor for cloudrecon:
 crt.sh and browsers also offer this services
+onliner for cloud recon:
+cloudrecon scrape -i
