@@ -74,3 +74,5 @@ get ip ranges from asn with this oneliner(install the toolsl where necessary).
 echo AS394161 | asnmap -silent | naabu -silent
 echo AS394161 | asnmap -silent | naabu -silent -nmap-cli 'nmap -sV'
 use smap to do port scannning (built in with shodan)...smap by s0md3v
+smaller companies may not own their asn or ips so look at the cloud for all their assests:
+CLOUD RECON
