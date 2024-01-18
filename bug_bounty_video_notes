@@ -81,3 +81,7 @@ check out g0ldencybersec github repor for cloudrecon:
 crt.sh and browsers also offer this services
 onliner for cloud recon:
 cloudrecon scrape -i
+find the git repo that has all ip ranges for services on the cloud, save it to a txt file and grep
+for "domain.com"
+use this bash script to output the file in a useable format:
+grep -F 'domain.com' file.txt | awk -F '[][]' '{print $2}' | sed 's# #\n#g' | grep ".domain.com" | sort -fu| cut -d ',' -f1 | sort -u
