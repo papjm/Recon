@@ -94,3 +94,5 @@ grep -F '.domain.com' file.txt | awk -F '[][]' '{print $2}' | sed 's# #\n#g' | s
 also check out hakluke tool  hakiptohost
 
 get ip ranges from https://github.com/lord-alfred/ipranges/tree/main/all
+
+check out shodan cheat sheet by cyber rights
