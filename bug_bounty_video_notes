@@ -96,3 +96,4 @@ also check out hakluke tool  hakiptohost
 get ip ranges from https://github.com/lord-alfred/ipranges/tree/main/all
 
 check out shodan cheat sheet by cyber rights
+use shosubgo to get subdomains from shodan
