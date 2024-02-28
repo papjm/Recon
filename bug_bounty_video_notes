@@ -106,7 +106,7 @@ check out the shodan pentesting guide by Terjensak
 
 from chatgpt use when generating custom wordlist 
 grep -v -E '\.json$|\.js$|\.jpg$|\.png$' wordlist.txt
-
+grep -v -E '\.json$|\.js$|\.jpg$|\.png$|\.css$|\.gif$|\.svg$|\.eot$|\.woff2$|\.tff$'
 
 find xss in swagger-ui with the following payloads
 
