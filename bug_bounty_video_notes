@@ -123,3 +123,4 @@ findig originIP:
 1.   check mx record (let the mail server send you a mail then inspect the mail) the mx record could be hosted on thesame ip of the main site.
 2. use the favicon hash on shodan with the argument (http.favicon.hash:552071969)
 3.also check out zoomeye.org
+4. Use cloudfail 
