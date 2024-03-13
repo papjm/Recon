@@ -124,3 +124,11 @@ findig originIP:
 2. use the favicon hash on shodan with the argument (http.favicon.hash:552071969)
 3.also check out zoomeye.org
 4. Use cloudfail 
+
+
+
+
+
+GET uniques domains from waybackurls:
+cat waybackurls.txt | sed 's/\.com.*/.com/' | sort -u
+
