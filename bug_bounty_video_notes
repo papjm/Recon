@@ -132,3 +132,14 @@ findig originIP:
 GET uniques domains from waybackurls:
 cat waybackurls.txt | sed 's/\.com.*/.com/' | sort -u
 
+deadbydaylight recovery code:
+7a13adafbc
+4c05f52383
+ae01c131be
+587209cedb
+f4de4fd849
+efefa5c22b
+98ad65a89c
+35da1fd646
+39f7f945f1
+3e5296b17e
