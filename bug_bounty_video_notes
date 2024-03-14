@@ -150,3 +150,5 @@ parse.name.raw:target.com
 https://www.youtube.com/watch?v=YbbWBtCrSlE
 use wafw00f to find the waf 
 wafw00f -a target.com
+also use whatweb
+whatweb target.com
