@@ -124,7 +124,16 @@ findig originIP:
 2. use the favicon hash on shodan with the argument (http.favicon.hash:552071969)
 3.also check out zoomeye.org
 4. Use cloudfail 
+  CENSYS DORK: https://www.youtube.com/watch?v=3UBVZIChTqA
+parse.name.raw:target.com
+https://www.youtube.com/watch?v=YbbWBtCrSlE
+use wafw00f to find the waf 
+wafw00f -a target.com
+also use whatweb
+whatweb target.com
 
+https://www.youtube.com/watch?v=YbbWBtCrSlE
+use https://www.ps3cfw.com/
 
 
 
@@ -145,10 +154,4 @@ efefa5c22b
 3e5296b17e
 
 
-  CENSYS DORK: https://www.youtube.com/watch?v=3UBVZIChTqA
-parse.name.raw:target.com
-https://www.youtube.com/watch?v=YbbWBtCrSlE
-use wafw00f to find the waf 
-wafw00f -a target.com
-also use whatweb
-whatweb target.com
+
