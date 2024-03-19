@@ -155,6 +155,12 @@ Using shodan
 1.   shodan init <YOUR_API_KEY>    
 2.   shodan search Ssl.cert.subject.CN:”hackerone.com” 200 — fields ip_str | httpx
 
+-----------------------
+Uncover tool
+----------------------
+uncover -q “hackerone.com” -e censys,fofa,shodan,shodan-idb | httpx
+
+
 
 
 GET uniques domains from waybackurls:
