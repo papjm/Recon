@@ -137,6 +137,13 @@ use https://www.ps3cfw.com/
 dnsrecon -d target.com
 
 https://medium.com/@bobby.S/how-to-find-origin-ip-1f684f459942
+-------------
+using CENSYS
+-------------
+First of all, you should create your account, it’s free on censys and you will get an API & Secret Key then add it on .bashrc like
+
+
+
 
 
 GET uniques domains from waybackurls:
