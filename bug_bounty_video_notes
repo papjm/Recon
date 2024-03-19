@@ -141,7 +141,8 @@ https://medium.com/@bobby.S/how-to-find-origin-ip-1f684f459942
 using CENSYS
 -------------
 First of all, you should create your account, it’s free on censys and you will get an API & Secret Key then add it on .bashrc like
-
+export CENSYS_API_ID=69247a69–XXXX-XXXX–XXXX-XXXXXXXXXXXX
+export CENSYS_API_SECRET=Pm4vXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 
 
