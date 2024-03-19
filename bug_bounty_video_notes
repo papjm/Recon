@@ -145,6 +145,10 @@ export CENSYS_API_ID=69247a69–XXXX-XXXX–XXXX-XXXXXXXXXXXX
 export CENSYS_API_SECRET=Pm4vXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 
+1.... pip install censys
+2. censys search hackerone.com
+3.. to get only ip's run     censys search hackerone.com | grep “ip” | egrep -v “description” | cut -d “:” -f2 | tr -d \”\,
+
 
 
 GET uniques domains from waybackurls:
