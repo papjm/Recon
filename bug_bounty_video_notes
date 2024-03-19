@@ -149,6 +149,12 @@ export CENSYS_API_SECRET=Pm4vXXXXXXXXXXXXXXXXXXXXXXXXXX
 2. censys search hackerone.com
 3.. to get only ip's run     censys search hackerone.com | grep “ip” | egrep -v “description” | cut -d “:” -f2 | tr -d \”\,
 
+-------------------
+Using shodan
+-------------------
+1.   shodan init <YOUR_API_KEY>    
+2.   shodan search Ssl.cert.subject.CN:”hackerone.com” 200 — fields ip_str | httpx
+
 
 
 GET uniques domains from waybackurls:
