@@ -180,6 +180,8 @@ https://github.com/codingo/VHostScan
 
 https://github.com/jobertabma/virtual-host-discovery
 
+https://infosecwriteups.com/finding-the-origin-ip-behind-cdns-37cd18d5275
+
 
 GET uniques domains from waybackurls:
 cat waybackurls.txt | sed 's/\.com.*/.com/' | sort -u
