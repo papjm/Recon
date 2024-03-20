@@ -172,6 +172,9 @@ IVRE
 ---------------------
 
 
+Outgoing Email: Sending an email to a user on the target that doesnt exist could return a bounce back revealing the origin IP.
+example: send an email to nouser@target.com
+
 GET uniques domains from waybackurls:
 cat waybackurls.txt | sed 's/\.com.*/.com/' | sort -u
 
