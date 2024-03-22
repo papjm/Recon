@@ -187,6 +187,11 @@ Crimeflare
 ---------------------
 
 
+---------------------
+https://github.com/pielco11/fav-up
+---------------------
+
+
 
 GET uniques domains from waybackurls:
 cat waybackurls.txt | sed 's/\.com.*/.com/' | sort -u
