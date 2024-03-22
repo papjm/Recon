@@ -195,7 +195,7 @@ IP DISCOVERY SOURCES:
 https://www.secjuice.com/finding-real-ips-of-origin-servers-behind-cloudflare-or-tor/
 https://blog.nem.ec/2020/01/22/discover-cloudflare-wordpress-ip/
 https://securitytrails.com/blog/ip-address-behind-cloudflare
-
+https://medium.com/@kerstan/hou-i-discovering-the-origin-ip-in-bug-bounty-bug-bounty-tuesday-47fa16c4ef34
 
 
 GET uniques domains from waybackurls:
