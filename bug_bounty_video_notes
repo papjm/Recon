@@ -153,7 +153,7 @@ export CENSYS_API_SECRET=Pm4vXXXXXXXXXXXXXXXXXXXXXXXXXX
 Using shodan
 -------------------
 1.   shodan init <YOUR_API_KEY>    
-2.   shodan search Ssl.cert.subject.CN:”hackerone.com” 200 — fields ip_str | httpx
+2.   shodan search Ssl.cert.subject.CN:”hackerone.com” 200 --fields ip_str | httpx
 
 -----------------------
 Uncover tool
