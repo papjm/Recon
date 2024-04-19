@@ -213,5 +213,5 @@ efefa5c22b
 39f7f945f1
 3e5296b17e
 
-
+Remove http:// https:// and www. from urls   cat urls.txt | sed -E 's/^(https?:\/\/)?(www\.)?([^\/]+)(\/.*)?/\3/'
 
