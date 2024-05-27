@@ -220,3 +220,6 @@ https://www.youtube.com/watch?v=wH6FEvmyo4A
 use fofa to get all possible favicon hash for your target fofa.info
 shodan download --limit 1000 myresults.json.gz 'DORK'
 shodan parse --fields ip_str,port --separator " " myresults.json.gz | awk '{print$1":"$2}' | httpx
+
+
+you can also access any dead host by using the arguement hostname:"subdomain.target.com"    on shodan
