@@ -217,4 +217,4 @@ Remove http:// https:// and www. from urls   cat urls.txt | sed -E 's/^(https?:\
 
 tips from Godfather orwa...waf evasion
 https://www.youtube.com/watch?v=wH6FEvmyo4A
-use fofa to get all possible favicon hash for your target
+use fofa to get all possible favicon hash for your target fofa.info
