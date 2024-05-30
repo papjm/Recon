@@ -223,3 +223,8 @@ shodan parse --fields ip_str,port --separator " " myresults.json.gz | awk '{prin
 use ipinfo.io to check the ip to make sure it is really owned by the company you were hunting on.... you dont want to report bugs on scam pages
 
 you can also access any dead host by using the arguement hostname:"subdomain.target.com"    on shodan
+
+
+Shubham Shah
+https://www.youtube.com/watch?v=0OMmWtU2Y_g
+
