@@ -234,3 +234,6 @@ https://github.com/assetnote/nowafpls
 
 ##removes everything after .com
 sed 's/\.com.*/.com/' urls.txt
+
+##remove https for google and bing dorking
+sed -E 's|https?://([^/]*\.com).*|\1|' urls.txt
