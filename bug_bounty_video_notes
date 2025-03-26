@@ -237,3 +237,11 @@ sed 's/\.com.*/.com/' urls.txt
 
 ##remove https for google and bing dorking
 sed -E 's|https?://([^/]*\.com).*|\1|' urls.txt
+
+
+
+
+##############https://www.youtube.com/watch?v=rODWJjUc1Xo&t=623s
+1. check ARIN
+2. do aws recon using this arguments on google site:s3.amazonaws.com inurl:company_name
+3. shodan dork hostname:example.com port:15672   for rabbitmq   hostname:example.com title:Dashboard[jenkins]
