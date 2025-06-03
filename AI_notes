@@ -1,0 +1,2 @@
+##remove protocols for dorking
+sed -E 's~https?://~~' urls.txt
