@@ -1,2 +1,7 @@
 ##remove protocols for dorking
 sed -E 's~https?://~~' urls.txt
+
+
+##remove all bing.com, leaving only your target dork.
+
+grep -oP 'site%3a\K[\w.-]+\.m-pesa\.com' yourfile.txt
