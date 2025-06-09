@@ -1,1 +1,2 @@
-grao
+##graphql fingerprinting
+cd into graphw00f directory and run the command ==> python3 main.py -f -t http://localhost:5013/graphql 
