@@ -1,2 +1,7 @@
 ##graphql fingerprinting
 cd into graphw00f directory and run the command ==> python3 main.py -f -t http://localhost:5013/graphql 
+
+
+###You can find a list of potential GraphQL staging and development
+locations at https://github.com/dolevf/Black-Hat-GraphQL/blob/master/reso
+urces/non-production-graphql-urls.txt.
