@@ -66,3 +66,6 @@ in the page source page find js files and search for sensitive data
 
 WAF BYPASS:
 https://twitter.com/Jayesh25_/status/1735240906750443851
+
+
+print out all urls in the href attribute of the a tag    [...document.links].map(a => a.href)
