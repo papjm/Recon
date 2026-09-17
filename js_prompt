@@ -1,0 +1,346 @@
+You are performing an authorized, defensive source-code review of JavaScript assets collected from a bug-bounty target.
+
+Analyze every relevant file recursively under:
+
+`<JS_DIRECTORY>`
+
+The directory contains approximately 20 JavaScript files and may also contain source maps, JSON, manifests, HTML, or related assets.
+
+Your job is to produce a complete API and route map. Do not limit the analysis to literal endpoint strings.
+
+## Safety and scope
+
+* Analyze local files only.
+* Do not send requests to the target.
+* Do not attempt exploitation.
+* Do not modify the original files.
+* You may create analysis scripts and output files in a separate `route-analysis` directory.
+* Treat all discovered secrets, tokens, credentials, personal data, and internal URLs as sensitive. Redact secret values in the report while recording their type and source location.
+
+## Required workflow
+
+### 1. Inventory all assets
+
+Recursively enumerate:
+
+* `.js`
+* `.mjs`
+* `.cjs`
+* `.map`
+* `.json`
+* `.html`
+* Webpack/Vite/Next.js manifests
+* Service workers
+* Lazy-loaded chunks
+* Configuration files
+
+Record each filename, size, hash, and apparent purpose.
+
+Locate every `sourceMappingURL`, including:
+
+* External `.map` references
+* Relative map paths
+* Absolute map URLs
+* Inline `data:` source maps
+* Base64-encoded source maps
+
+Match each JavaScript bundle to its source map where possible.
+
+### 2. Process source maps completely
+
+For every source map:
+
+* Parse the map rather than treating it as plain text.
+* Inspect `sources`, `sourceRoot`, `sourcesContent`, `names`, `file`, and indexed-map `sections`.
+* Extract every embedded original source from `sourcesContent`.
+* Preserve the original virtual paths and filenames.
+* Identify maps that are malformed, incomplete, protected, missing, or reference unavailable sources.
+* If a map uses relative paths, resolve them against the bundle and map locations.
+* If a map is inline and encoded, decode it.
+* Store recovered sources under `route-analysis/recovered-sources/` without overwriting files that share the same basename.
+* Build a bundle → source map → recovered source relationship table.
+
+Do not assume a map is useless just because `sourcesContent` is missing. Still inspect its source filenames, symbols, source roots, and mappings.
+
+### 3. Search literal routes and network indicators
+
+Extract all literal and near-literal instances of:
+
+* HTTP and HTTPS URLs
+* Relative API paths
+* Hostnames and subdomains
+* API base URLs
+* Service prefixes
+* API versions
+* REST resources
+* GraphQL endpoints and operation names
+* WebSocket URLs
+* Server-Sent Events endpoints
+* Upload/download/export/import routes
+* Authentication, OAuth, OIDC, SAML, callback, redirect and logout routes
+* Administrative, internal, debug, health, metrics and feature-flag routes
+* CDN, object-storage and presigned-URL patterns
+* Mobile or legacy API routes
+
+Search both the original bundles and recovered source-map content.
+
+### 4. Reconstruct dynamically assembled routes
+
+This is critical: do not report only strings that already look like complete endpoints.
+
+Trace routes assembled through:
+
+* String concatenation
+* Template literals
+* `.concat()`
+* Array `.join()`
+* Object properties
+* Computed properties
+* Constants and enums
+* Imported and exported variables
+* Webpack module references
+* Minified variable aliases
+* Environment and configuration objects
+* Ternary expressions
+* Route registries
+* Endpoint factory functions
+* URL-builder/helper functions
+* Axios instances and `baseURL`
+* Fetch wrappers
+* API client classes
+* Interceptors
+* React Query
+* RTK Query / `createApi`
+* Apollo and other GraphQL clients
+* Angular services
+* Generated SDK clients
+* Next.js runtime configuration
+* Webpack public paths
+* Vite environment variables
+
+For example, detect and resolve constructions such as:
+
+```javascript
+service + version + path
+`${baseURL}/${version}/users/${userId}`
+client.get(config.apiBase.concat(routes.profile))
+buildUrl(SERVICES.wallet, VERSIONS.v3, PATHS.transactions)
+```
+
+Follow values across files and recovered sources. Build a dependency graph showing where each fragment is defined and where it is consumed.
+
+If the complete route cannot be resolved, do not discard it. Preserve it as a partially resolved route and identify the unknown fragment.
+
+### 5. Detect encoded and obfuscated route material
+
+Look for route or configuration information represented using:
+
+* Base64
+* URL/percent encoding
+* Unicode escapes
+* Hexadecimal escapes
+* Octal escapes
+* Character-code arrays
+* Reversed strings
+* Split/join transformations
+* Lookup arrays
+* Simple XOR or substitution routines
+* Packed or escaped JSON
+* Runtime configuration injected into HTML
+* `JSON.parse`, `atob`, `decodeURIComponent`, `String.fromCharCode`, `unescape`, or equivalent decoding functions
+
+Decode only when the transformation can be established from the code. Record the original value, decoding method, decoded result, and source location. Do not guess that arbitrary encoded data is an endpoint.
+
+### 6. Map the complete request structure
+
+For every endpoint or operation, determine where possible:
+
+* Final reconstructed URL or route template
+* Scheme and hostname
+* Base URL
+* Service prefix
+* API version
+* Path
+* HTTP method
+* Path parameters
+* Query parameters
+* JSON body fields
+* Form fields
+* Multipart fields
+* Required headers
+* Custom headers
+* Cookies
+* Authentication mechanism
+* Content type
+* Response type
+* Calling function or component
+* Preconditions such as KYC, onboarding, feature flags, user role or subscription
+* Evidence source
+* Confidence level
+
+Trace parameter values through function arguments, destructuring, request objects, serializers, and wrapper functions. Distinguish parameters that are always sent from parameters that are optional or conditional.
+
+For GraphQL, extract:
+
+* Endpoint
+* Operation type
+* Operation name
+* Query or mutation text
+* Variables and their types
+* Persisted-query hashes or IDs
+* Relevant fragments
+* Client-side authorization or feature conditions
+
+### 7. Identify application logic surrounding routes
+
+For each important route, inspect the nearby application logic and record:
+
+* What user action triggers it
+* Which UI component calls it
+* Required account state
+* Role, permission, tenant, organization or ownership checks visible in the client
+* Feature flags
+* Onboarding/KYC requirements
+* Identifier sources
+* Whether IDs appear user-controlled
+* Whether the client hides functionality without evidence of server-side enforcement
+* Pagination and filter controls
+* Alternate versions or legacy aliases
+* Related create/read/update/delete operations
+* Error handling that reveals expected status codes
+
+Client-side checks are leads, not proof of a vulnerability. Do not label something vulnerable without server-side evidence.
+
+### 8. Cross-file correlation
+
+Do not analyze each file in isolation.
+
+Correlate:
+
+* Base URLs defined in one file with paths used in another
+* Service names with version constants
+* Route registries with request wrappers
+* Imported functions with their definitions
+* Minified modules with recovered source-map files
+* Identical or related routes across API versions
+* The same operation exposed through different aliases or clients
+* Lazy chunks with their parent bundles
+* Route paths with parameter schemas and UI actions
+
+When multiple definitions conflict, preserve each variant and explain the likely environment or build difference.
+
+### 9. Prevent false positives and omissions
+
+For every result:
+
+* Cite the exact file and line number where possible.
+* Include a short supporting code excerpt.
+* State whether it is literal, reconstructed, partially resolved, inferred, or source-map recovered.
+* Assign `High`, `Medium`, or `Low` confidence.
+* Never invent a missing base URL, method, parameter or authentication requirement.
+* Deduplicate equivalent routes while preserving their aliases and all source references.
+* Distinguish frontend navigation routes from backend API routes.
+* Distinguish asset paths from API endpoints.
+* Distinguish examples/test data from production code.
+* Keep unresolved fragments even when their purpose is uncertain.
+
+### 10. Perform a second-pass completeness review
+
+After the initial extraction:
+
+* Search again for every discovered service name, route fragment and URL-builder function.
+* Review all unmatched strings beginning with `/`, `./`, `../`, `http`, `ws`, `api`, `rest`, `graphql`, or service-like names.
+* Review string constants passed indirectly into request wrappers.
+* Review all calls to `fetch`, `XMLHttpRequest`, Axios, GraphQL clients, WebSocket constructors and custom request functions.
+* Check whether every request call was mapped to a route.
+* Check whether every route-registry entry was connected to a request.
+* Check whether all source maps were processed.
+* Check whether all recovered source files were searched.
+* Clearly state any remaining blind spots.
+
+## Required output files
+
+Create `route-analysis/` containing:
+
+### `route-map.md`
+
+A readable report containing:
+
+1. Executive summary
+2. Asset and source-map coverage
+3. Base URLs and services
+4. Fully reconstructed endpoints
+5. Partially reconstructed endpoints
+6. Standalone/unresolved fragments
+7. GraphQL operations
+8. WebSocket and SSE endpoints
+9. Parameters, bodies and headers
+10. Authentication and account-state requirements
+11. Route aliases and API versions
+12. Encoded or obfuscated findings
+13. Interesting application logic
+14. Missing dependencies and blind spots
+15. Recommended manual verification order
+
+### `routes.csv`
+
+Use these columns:
+
+```text
+route,hostname,base_url,service,version,path,method,route_type,construction_type,path_params,query_params,body_fields,headers,auth,content_type,caller,account_state,source_file,line,evidence,confidence,notes
+```
+
+### `routes.json`
+
+Store structured records for all routes, including:
+
+* Complete routes
+* Partial routes
+* Unresolved fragments
+* Aliases
+* Evidence references
+* Construction fragments
+* Parameters
+* Confidence
+* Source-map provenance
+
+### `fragments.csv`
+
+Use these columns:
+
+```text
+fragment,type,defined_in,line,used_in,resolved_value,missing_dependency,confidence,notes
+```
+
+### `source-map-inventory.md`
+
+Document:
+
+* Bundle-to-map relationships
+* Map parsing status
+* Number of recovered sources
+* Missing or inaccessible maps
+* Inline maps
+* Source roots and developer paths
+* Coverage gaps
+
+### `request-call-sites.md`
+
+List every detected network call site and whether it was successfully connected to a route. Include unresolved call sites.
+
+## Final response
+
+When finished, provide:
+
+* Number of files inspected
+* Number of source maps found and successfully processed
+* Number of recovered original source files
+* Number of request call sites detected
+* Number of fully reconstructed routes
+* Number of partially reconstructed routes
+* Number of unresolved fragments
+* Number of GraphQL operations
+* Important blind spots
+* Links or paths to all generated reports
+
+Do not stop after simple regex extraction. Continue until you have traced request construction across files, processed available source maps, preserved unresolved fragments, and completed the second-pass coverage review.
